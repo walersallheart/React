@@ -6,6 +6,11 @@ import './CourseInput.css';
 
 const FormControl = styled.div`
   margin: 0.5rem 0;
+  width:100%;
+
+  @media (min-width: 780px) {
+    width:auto;
+  }
 
   & label {
     font-weight: bold;
