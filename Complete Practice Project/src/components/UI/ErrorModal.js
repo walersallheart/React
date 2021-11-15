@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ReactDOM from 'react-dom';
 
 import Card from "./Card";
@@ -26,7 +26,7 @@ const ModalOverlay = props => {
 
 const ErrorModal = props => {
     return (
-        <React.Fragment>
+        <Fragment>
             {ReactDOM.createPortal(
                 <Backdrop onConfirm={props.onConfirm}/>, document.getElementById('background-root')
             )}
@@ -37,7 +37,7 @@ const ErrorModal = props => {
                     onConfirm={props.onConfirm}
                 />, document.getElementById('overlay-root')
             )}
-        </React.Fragment>
+        </Fragment>
     );
 }
 
