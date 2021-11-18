@@ -32,7 +32,7 @@ export const AuthContextProvider = props => {
 
     return <AuthContext.Provider
         value = {{
-                isLoggedIn: false,
+                isLoggedIn: isLoggedIn,
                 onLogout: logoutHandler,
                 onLogin: loginHandler
             }}>{props.children}</AuthContext.Provider>;

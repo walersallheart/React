@@ -11,7 +11,7 @@ const emailReducer = (state, action) => {
   }
 
   if (action.type === 'INPUT_BLUR') {
-    return { value : state.val, isValid: state.value.includes('@')};
+    return { value : state.value, isValid: state.value.includes('@')};
   }
 
   return { value :'', isValid: false};
@@ -23,7 +23,7 @@ const passwordReducer = (state, action) => {
   }
 
   if (action.type === 'INPUT_BLUR') {
-    return { value : state.val, isValid: state.value.trim().length > 6};
+    return { value : state.value, isValid: state.value.trim().length > 6};
   }
 
   return { value :'', isValid: false};
@@ -48,7 +48,6 @@ const Login = props => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      console.log('checking form validity');
       setFormIsValid(
         emailIsValid && passwordIsValid
       );
