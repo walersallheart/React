@@ -1,8 +1,9 @@
-import React, { useEffect, useState, useReducer } from 'react';
+import React, { useEffect, useState, useReducer, useContext } from 'react';
 
 import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
 import Button from '../UI/Button/Button';
+import AuthContext from '../../store/auth-context'
 
 const emailReducer = (state, action) => {
   if (action.type === 'USER_INPUT') {
@@ -28,7 +29,7 @@ const passwordReducer = (state, action) => {
   return { value :'', isValid: false};
 }
 
-const Login = (props) => {
+const Login = props => {
   // const [enteredEmail, setEnteredEmail] = useState('');
   // const [emailIsValid, setEmailIsValid] = useState();
   // const [enteredPassword, setEnteredPassword] = useState('');
@@ -37,6 +38,8 @@ const Login = (props) => {
 
   const [emailState, dispatchEmail] = useReducer(emailReducer, { value :'', isValid: false});
   const [passwordState, dispatchPassword] = useReducer(passwordReducer, { value :'', isValid: false});
+
+  const authCtx = useContext(AuthContext);
 
   //Using this colon changes the name of the value that is pulled out via destructring
   //By pulling out the bools and no having the entire state be the dependencies, we reduce the number of calls to useEffect
@@ -82,7 +85,7 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(emailState.value, passwordState.value);
+    authCtx.onLogin(emailState.value, passwordState.value);
   };
 
   return (
