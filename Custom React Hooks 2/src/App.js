@@ -5,16 +5,12 @@ import NewTask from './components/NewTask/NewTask';
 import useHttp from './hooks/use-http';
 
 function App() {
-  console.log('App');
   const [tasks, setTasks] = useState([]);
 
   const { isLoading, error, sendRequest: fetchTasks } = useHttp();
 
   useEffect(() => {
-    console.log('App useEffect');
-
     const transformTasks = tasksObj => {
-      console.log('transformTasks');
       const loadedTasks = [];
 
       for (const taskKey in tasksObj) {
