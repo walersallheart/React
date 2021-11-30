@@ -4,6 +4,7 @@ import Section from '../UI/Section';
 import TaskForm from './TaskForm';
 
 const NewTask = (props) => {
+  console.log('NewTasks');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
