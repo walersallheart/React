@@ -1,4 +1,4 @@
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 //Switch makes it so only the Route that is matched first will load
 //the default is for ALL Routes that match the path to load
@@ -15,6 +15,10 @@ function App() {
       <MainHeader />
       <main>
         <Switch>
+          <Route path='/' exact>
+            <Redirect to='/welcome' />
+          </Route>
+
           <Route path='/welcome'>
             <Welcome />
           </Route>
