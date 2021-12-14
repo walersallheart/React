@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import MeetupList from '../components/meetups/MeetupList';
 
 const DUMMY_MEETUPS = [
@@ -32,14 +31,22 @@ const DUMMY_MEETUPS = [
     }
 ];
 
-const HomePage = () => {
-    const [loadedMeetups, setLoadedMeetups] = useState([]);
+const HomePage = props => {
+    return <MeetupList meetups={props.meetups} />;
+}
 
-    useEffect(() => {
-        setLoadedMeetups(DUMMY_MEETUPS);
-    }, []);
-
-    return <MeetupList meetups={loadedMeetups} />;
+//only works for stuff under the "pages" folder to render serverside
+//getStaticProps is a reserved function in next.js to do server side rendering
+//this function can be async
+//any normal server side code (like reading files) can be run here
+//this is run only at build time
+//this function MUST return a javascript object
+export async function getStaticProps() {
+    return {
+        props: {
+            meetups: DUMMY_MEETUPS
+        }
+    }
 }
 
 export default HomePage;
