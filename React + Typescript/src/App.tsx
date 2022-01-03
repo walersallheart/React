@@ -13,13 +13,19 @@ function App() {
     setTodos((prevTodos) => {
       //use concat instead of push because it creates a new array instead of mutating the existing one
       return prevTodos.concat(newTodo);
-    })
+    });
+  }
+
+  const removeTodoHandler = (todoId:string) => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter(todo => todo.id !== todoId);
+    });
   }
 
   return (
     <div className="App">
       <NewTodo onAddTodo={addTodoHandler} />
-      <Todos items={todos} />
+      <Todos items={todos} onRemoveTodo={removeTodoHandler} />
     </div>
   );
 }
